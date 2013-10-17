@@ -1,0 +1,40 @@
+<%%= form_for @<%= singular_table_name %>, :html => {:class => 'form-horizontal panel'} do |f| %>
+<%% if @<%= singular_table_name %>.errors.any? %>
+<div class="alert alert-danger static">
+  <h4><%%= t :header, count: @<%= singular_table_name %>.errors.count, model: t('<%= plural_table_name %>.<%= singular_table_name %>').downcase, scope: [:activerecord, :errors, :template] %></h4>
+
+  <ul>
+    <%% @<%= singular_table_name %>.errors.full_messages.each do |msg| %>
+    <li><%%= msg %></li>
+    <%% end %>
+  </ul>
+</div>
+<%% end %>
+
+<% attributes.each do |attribute| -%>
+    <div class="form-group">
+      <% if attribute.password_digest? -%>
+          <%%= f.label :password, class: 'control-label col-lg-3' %>
+          <div class="col-lg-9">
+            <%%= f.password_field :password, class: 'form-control' %>
+          </div>
+          </div>
+          <div class="form-group">
+            <%%= f.label :password_confirmation, class: 'control-label col-lg-3' %>
+            <div class="col-lg-9">
+              <%%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+      <% else -%>
+          <%%= f.label :<%= attribute.name %>, class: 'control-label col-lg-3' %>
+          <div class="col-lg-9">
+          <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, class: 'form-control' %>
+          </div>
+      <% end -%>
+      </div>
+<% end -%>
+<div class="row">
+  <button class='btn btn-success col-lg-offset-2 '>
+    <i class="icon-save"></i> <%%= t('save') %>
+  </button>
+</div>
+<%% end %>
