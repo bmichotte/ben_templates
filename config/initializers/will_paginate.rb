@@ -14,7 +14,6 @@ module WillPaginate
       protected
 
       def html_container(html)
-        logger.debug "coucou"
         tag(:ul, html, container_attributes)
       end
 
