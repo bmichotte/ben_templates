@@ -1,7 +1,7 @@
 <h2><%%= t('<%= plural_table_name %>.list') %></h2>
 <div class="btn-toolbar">
   <div class="btn-group">
-    <%%= link_to content_tag(:i, '', :class => 'icon-plus icon-fixed-width').html_safe + t('<%= plural_table_name %>.new'), new_<%= singular_table_name %>_path, { class: 'btn btn-primary' } %>
+    <%%= link_to content_tag(:i, '', :class => 'fa fa-plus fa-fw').html_safe + t('<%= plural_table_name %>.new'), new_<%= singular_table_name %>_path, { class: 'btn btn-primary' } %>
   </div>
   <%%= form_tag request.path, :method => 'get', :class => 'form-inline' do %>
   <div class="form-group">
@@ -26,8 +26,8 @@
             <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
         <% end -%>
         <td class="centered">
-          <%%= link_to content_tag(:i, '', :class => 'admin-links icon-edit', :title => t('edit')).html_safe, edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %>
-          <%%= link_to content_tag(:i, '', :class => 'admin-links icon-trash', :title => t('delete')).html_safe, <%= singular_table_name %>, {class: 'delete-obj', method: :delete, data: {confirm: t('confirm_delete')}} %>
+          <%%= link_to content_tag(:i, '', :class => 'admin-links fa fa-edit', :title => t('edit')).html_safe, edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %>
+          <%%= link_to content_tag(:i, '', :class => 'admin-links fa fa-trash-o', :title => t('delete')).html_safe, <%= singular_table_name %>, {class: 'delete-obj', method: :delete, data: {confirm: t('confirm_delete')}} %>
         </td>
       </tr>
       <%% end %>
